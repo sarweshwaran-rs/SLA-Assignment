@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        body>h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+
+
+        .mainSection {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .rsection,
+        .psection,
+        .lsection,
+        .rmsection {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+
+            flex: 1 1 calc(50% - 25px);
+            min-width: 280px;
+        }
+
+        .rsection h2,
+        .psection h2,
+        .lsection h2,
+        .rmsection h2 {
+            color: #1e40af;
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #475569;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: #334155;
+            overflow-wrap: anywhere;
+        }
+
+        h3 span {
+            color: #15803d;
+            font-weight: 600;
+        }
+
+        p {
+            color: #64748b;
+            overflow-wrap: anywhere;
+        }
+
+        .mainSection hr {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            body>h1 {
+                font-size: 1.8rem;
+            }
+
+            .mainSection {
+                gap: 20px;
+            }
+
+            .rsection,
+            .psection,
+            .lsection,
+            .rmsection {
+                flex: 1 1 100%;
+                min-width: 0;
+            }
+        }
+
+        /* Mobile Layout */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            body>h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .rsection,
+            .psection,
+            .lsection,
+            .rmsection {
+                padding: 18px;
+                gap: 12px;
+            }
+
+            .rsection h2,
+            .psection h2,
+            .lsection h2,
+            .rmsection h2 {
+                font-size: 1.1rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Assignment</h1>
+    <!-- 1. Reverse a String -->
+    <section class="mainSection">
+
+        <section class="rsection">
+            <h2>1. Reverse a String</h2>
+
+            <label for="sinput">Enter a string:</label>
+            <input type="text" id="sinput">
+
+            <button onclick="reverseString()">Reverse</button>
+
+            <h3>Reversed String: <span id="reversedInput"></span></h3>
+        </section>
+
+        <hr>
+
+        <!-- 2. Check Palindrome -->
+        <section class="psection">
+            <h2>2. Check Whether a String Is a Palindrome</h2>
+
+            <label for="pinput">Enter a string:</label>
+            <input type="text" id="pinput">
+
+            <button onclick="checkPalindrome()">Check Palindrome</button>
+
+            <h3>Result: <span id="palindromeResult"></span></h3>
+        </section>
+
+        <hr>
+
+        <!-- 3. Find the Largest Number -->
+        <section class="lsection">
+            <h2>3. Find the Largest Number in an Array</h2>
+
+            <p>Array: [17, 18, 20, 30, 5, 10, 15, 2, 4, 25]</p>
+
+            <button onclick="findLargestInArray()">Find Largest</button>
+
+            <h3 id="largest"></h3>
+        </section>
+
+        <hr>
+
+        <!-- 4. Remove the First Element -->
+        <section class="rmsection">
+            <h2>4. Remove the First Element from an Array</h2>
+
+            <p>Original Array: [17, 18, 20, 30, 5, 10, 15, 2, 4, 25]</p>
+
+            <button onclick="removeFirstFromArray()">Remove First Element</button>
+
+            <h3>Removed Element: <span id="removedElement"></span></h3>
+            <h3>Updated Array: <span id="updatedArray"></span></h3>
+        </section>
+    </section>
+    <script>
+
+        // 1. Reverse a String
+        function reverseString() {
+            const text = document.getElementById("sinput").value;
+
+            if (text.trim() === "") {
+                document.getElementById("reversedInput").textContent = "Please Enter a String to reverse it";
+                return;
+            }
+
+            let reversed = "";
+
+            for (let i = text.length - 1; i >= 0; i--) {
+                reversed += text[i];
+            }
+
+            document.getElementById("reversedInput").textContent = reversed;
+        }
+
+
+        // 2. Check Whether a String Is a Palindrome
+        function checkPalindrome() {
+            const text = document.getElementById("pinput").value;
+
+            const normalizedText = text.toLowerCase();
+
+            let reversed = "";
+
+            for (let i = normalizedText.length - 1; i >= 0; i--) {
+                reversed += normalizedText[i];
+            }
+
+            if (normalizedText === "") {
+                document.getElementById("palindromeResult").textContent =
+                    "Please enter a string.";
+            } else if (normalizedText === reversed) {
+                document.getElementById("palindromeResult").textContent =
+                    "Palindrome";
+            } else {
+                document.getElementById("palindromeResult").textContent =
+                    "Not a Palindrome";
+            }
+        }
+
+
+        // 3. Find the Largest Number in an Array
+        function findLargestInArray() {
+            const arr = [17, 18, 20, 30, 5, 10, 15, 2, 4, 25];
+
+            let max = arr[0];
+
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+
+            document.getElementById("largest").textContent =
+                "Largest Number: " + max;
+        }
+
+
+        // 4. Remove the First Element from an Array
+        function removeFirstFromArray() {
+            const arr = [17, 18, 20, 30, 5, 10, 15, 2, 4, 25];
+
+            const firstElement = arr.shift();
+
+            document.getElementById("removedElement").textContent =
+                firstElement;
+
+            document.getElementById("updatedArray").textContent =
+                JSON.stringify(arr);
+        }
+    </script>
+</body>
+
+</html>
