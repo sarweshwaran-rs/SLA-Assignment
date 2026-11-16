@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.  Reverse a string without using built-in reverse methods.
+        2.  Check whether a string is a palindrome.
+        3.  Find the largest number in an array.
+        4.  Find the smallest number in an array.
+        5.  Remove duplicate elements from an array.
+        6.  Find the factorial of a number.
+        7.  Generate Fibonacci series up to n terms.
+        8.  Check whether a number is prime.
+        9.  Count vowels in a string.
+        10. Swap two numbers without using a third variable.
+        11. Sort an array without using sort().
+        12. Find the second largest number in an array.
+        13. Merge two arrays and remove duplicates.
+        14. Find the missing number in an array from 1 to n.
+        15. Print FizzBuzz from 1 to 100.
+        16. Count frequency of each character in a string.
+        17. Find intersection of two arrays.
+        18. Convert the first letter of each word to uppercase.
+        19.  Flatten a nested array.
+        20. Implement a simple calculator using functions.
+        */
+
+        function reverseString(str) {
+            let result = "";
+            
+            for (let i = str.length - 1; i >= 0; i--) {
+                result += str[i];
+            }
+
+            return result;
+        }
+
+        console.log(reverseString("hello"));
+
+        function isPalindrome(str) {
+            let reversed = "";
+
+            for (let i = str.length - 1; i >= 0; i--) {
+                reversed += str[i];
+            }
+
+            return str === reversed;
+        }
+
+        console.log(isPalindrome("madam")); // true
+        console.log(isPalindrome("hello")); // false
+
+        function largestNumber(arr) {
+            let largest = arr[0];
+
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > largest) {
+                    largest = arr[i];
+                }
+            }
+
+            return largest;
+        }
+
+        console.log(largestNumber([10, 25, 5, 40, 15])); // 40
+
+        function smallestNumber(arr) {
+            let smallest = arr[0];
+
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] < smallest) {
+                    smallest = arr[i];
+                }
+            }
+
+            return smallest;
+        }
+
+        console.log(smallestNumber([10, 25, 5, 40, 15])); // 5
+
+        function removeDuplicates(arr) {
+            let result = [];
+
+            for (let i = 0; i < arr.length; i++) {
+                if (!result.includes(arr[i])) {
+                    result.push(arr[i]);
+                }
+            }
+
+            return result;
+        }
+
+        console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
+        // [1, 2, 3, 4, 5]
+
+        // function factorial(n) {
+        //     let result = 1;
+
+        //     for (let i = 1; i <= n; i++) {
+        //         result *= i;
+        //     }
+
+        //     return result;
+        // }
+
+        function factorial(n) {
+            if (n <= 1) {
+                return 1;
+            }
+
+            return n * factorial(n - 1);
+        }
+
+        console.log(factorial(5)); // 120
+
+        function fibonacci(n) {
+            let a = 0;
+            let b = 1;
+
+            for (let i = 0; i < n; i++) {
+                console.log(a);
+
+                let next = a + b;
+                a = b;
+                b = next;
+            }
+        }
+
+        fibonacci(7);
+        // 0 1 1 2 3 5 8
+
+        function isPrime(n) {
+            if (n <= 1) {
+                return false;
+            }
+
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        console.log(isPrime(7));  // true
+        console.log(isPrime(10)); // false
+
+        function countVowels(str) {
+            let count = 0;
+            let vowels = "aeiouAEIOU";
+
+            for (let i = 0; i < str.length; i++) {
+                if (vowels.includes(str[i])) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        console.log(countVowels("Hello World")); // 3
+
+        let a = 10;
+        let b = 20;
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        console.log(a); // 20
+        console.log(b); // 10
+
+        function bubbleSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+
+                for (let j = 0; j < arr.length - i - 1; j++) {
+
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+
+            return arr;
+        }
+
+        console.log(bubbleSort([5, 2, 8, 1, 3]));
+        // [1, 2, 3, 5, 8]
+
+        function secondLargest(arr) {
+            let largest = -Infinity;
+            let second = -Infinity;
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (arr[i] > largest) {
+                    second = largest;
+                    largest = arr[i];
+                }
+                else if (arr[i] > second && arr[i] !== largest) {
+                    second = arr[i];
+                }
+            }
+
+            return second === -Infinity ? null : second;
+        }
+
+        console.log(secondLargest([10, 20, 5, 40, 30]));
+        // 30
+
+        function mergeArrays(arr1, arr2) {
+            let result = [];
+
+            for (let i = 0; i < arr1.length; i++) {
+                if (!result.includes(arr1[i])) {
+                    result.push(arr1[i]);
+                }
+            }
+
+            for (let i = 0; i < arr2.length; i++) {
+                if (!result.includes(arr2[i])) {
+                    result.push(arr2[i]);
+                }
+            }
+
+            return result;
+        }
+
+        console.log(mergeArrays([1, 2, 3], [2, 3, 4, 5]));
+        // [1, 2, 3, 4, 5]
+
+        function missingNumber(arr, n) {
+            let expectedSum = (n * (n + 1)) / 2;
+            let actualSum = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                actualSum += arr[i];
+            }
+
+            return expectedSum - actualSum;
+        }
+
+        console.log(missingNumber([1, 2, 4, 5], 5));
+        // 3
+
+        function fizzBuzz() {
+
+            for (let i = 1; i <= 100; i++) {
+
+                if (i % 3 === 0 && i % 5 === 0) {
+                    console.log("FizzBuzz");
+                }
+                else if (i % 3 === 0) {
+                    console.log("Fizz");
+                }
+                else if (i % 5 === 0) {
+                    console.log("Buzz");
+                }
+                else {
+                    console.log(i);
+                }
+            }
+        }
+
+        fizzBuzz();
+
+        function characterFrequency(str) {
+            let frequency = {};
+
+            for (let i = 0; i < str.length; i++) {
+
+                let ch = str[i];
+
+                if (frequency[ch]) {
+                    frequency[ch]++;
+                }
+                else {
+                    frequency[ch] = 1;
+                }
+            }
+
+            return frequency;
+        }
+
+        console.log(characterFrequency("hello"));
+
+        // {
+        //     h: 1,
+        //     e: 1,
+        //     l: 2,
+        //     o: 1
+        // }
+
+        function intersection(arr1, arr2) {
+            let result = [];
+
+            for (let i = 0; i < arr1.length; i++) {
+
+                if (arr2.includes(arr1[i]) && !result.includes(arr1[i])) {
+                    result.push(arr1[i]);
+                }
+            }
+
+            return result;
+        }
+
+        console.log(intersection([1, 2, 3, 4], [3, 4, 5, 6]));
+        // [3, 4]
+
+        function capitalizeWords(str) {
+            let result = "";
+            let capitalize = true;
+
+            for (let i = 0; i < str.length; i++) {
+
+                if (str[i] === " ") {
+                    result += str[i];
+                    capitalize = true;
+                }
+                else if (capitalize) {
+                    result += str[i].toUpperCase();
+                    capitalize = false;
+                }
+                else {
+                    result += str[i];
+                }
+            }
+
+            return result;
+        }
+
+        console.log(capitalizeWords("hello world javascript"));
+        // Hello World Javascript
+
+        function flattenArray(arr) {
+            let result = [];
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (Array.isArray(arr[i])) {
+                    let nested = flattenArray(arr[i]);
+
+                    for (let j = 0; j < nested.length; j++) {
+                        result.push(nested[j]);
+                    }
+                }
+                else {
+                    result.push(arr[i]);
+                }
+            }
+
+            return result;
+        }
+
+        console.log(flattenArray([1, [2, [3, 4], 5], 6]));
+        // [1, 2, 3, 4, 5, 6]
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        function subtract(a, b) {
+            return a - b;
+        }
+
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        function divide(a, b) {
+            if (b === 0) {
+                return "Cannot divide by zero";
+            }
+
+            return a / b;
+        }
+
+        function calculator(a, b, operator) {
+
+            switch (operator) {
+
+                case "+":
+                    return add(a, b);
+
+                case "-":
+                    return subtract(a, b);
+
+                case "*":
+                    return multiply(a, b);
+
+                case "/":
+                    return divide(a, b);
+
+                default:
+                    return "Invalid operator";
+            }
+        }
+
+        console.log(calculator(10, 5, "+")); // 15
+        console.log(calculator(10, 5, "-")); // 5
+        console.log(calculator(10, 5, "*")); // 50
+        console.log(calculator(10, 5, "/")); // 2
+    </script>
+</body>
+</html>
